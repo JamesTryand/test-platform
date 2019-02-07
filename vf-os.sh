@@ -181,9 +181,9 @@ services:
     image: "vfos/broker-auth-adapter:latest"      
 configs:                                          
   vfos_messaging_pubsub_config:                   
-    file: ./vfos_messaging_pubsub_config.config   
+    file: ./stack-messaging/vfos_messaging_pubsub_config.config   
   vfos_messaging_pubsub_plugins:                  
-    file: ./vfos_messaging_pubsub_plugins.config  
+    file: ./stack-messaging/vfos_messaging_pubsub_plugins.config  
 EOF
 
 #Setup basic network configuration
