@@ -160,6 +160,30 @@ services:
       - CHE_DOCKER_IP_EXTERNAL=127.0.0.1
       - CHE_PORT=8081
       - CHE_REGISTRY_HOST=localhost
+  rabbitmq:                                       
+    restart: unless-stopped                       
+    image: "rabbitmq:3-management"                
+    hostname: "messaging-pubsub"                  
+    ports:                                        
+      - "25672:25672"                             
+      - "4369:4369"                               
+      - "5671:5671"                               
+      - "5672:5672"                               
+      - "15672:15672"                             
+    volumes:                                      
+      - "./data:/var/lib/rabbitmq"                
+    configs:                                      
+      - source: vfos_messaging_pubsub_config      
+        target: /etc/rabbitmq/rabbitmq.conf       
+      - source: vfos_messaging_pubsub_plugins     
+        target: /etc/rabbitmq/enabled_plugins     
+  broker-auth-adapter:                            
+    image: "vfos/broker-auth-adapter:latest"      
+configs:                                          
+  vfos_messaging_pubsub_config:                   
+    file: ./vfos_messaging_pubsub_config.config   
+  vfos_messaging_pubsub_plugins:                  
+    file: ./vfos_messaging_pubsub_plugins.config  
 EOF
 
 #Setup basic network configuration
