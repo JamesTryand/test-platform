@@ -43,7 +43,7 @@ mkdir -p .compose
 mkdir -p .persist
 
 cat << EOF > .compose/$INITIAL_COMPOSE_FILE
-version: '3'
+version: '3.3'
 
 services:
   reverse-proxy:

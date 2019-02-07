@@ -45,7 +45,7 @@ networks.map((network) => {
 })
 
 // Generate docker-compose file for this asset into folder
-fs.writeFileSync(COMPOSE_FOLDER + NETWORK_COMPOSE_FILE, 'version: "3"\nservices:\n   ' + JSON.stringify(services) + '\n\nnetworks:\n   ' + JSON.stringify(networkSection))
+fs.writeFileSync(COMPOSE_FOLDER + NETWORK_COMPOSE_FILE, 'version: "3.3"\nservices:\n   ' + JSON.stringify(services) + '\n\nnetworks:\n   ' + JSON.stringify(networkSection))
 // If parameter: call docker-compose image to reload asset
 if (reload) {
   exec('docker exec vf_os_platform_exec_control docker-compose up -d', (error, stdout, stderr) => {
